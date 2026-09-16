@@ -2,6 +2,7 @@
 #include <iostream> 
 #include "Book.h"
 #include "Item.h"
+#include <string>
 
 using namespace std;
 
@@ -25,4 +26,9 @@ void Book::display() const {
 
     cout << endl;
 
+}
+
+string Book::toCsv() const
+{
+    return "Book," + to_string(getId()) + "," + getTitle() + "," + getAuthor() + "," + to_string(isBorrowed());
 }

@@ -10,6 +10,7 @@ class Book : public Item {
     Book(int i , std::string t ,  std::string a);
     std:: string getAuthor() const;
     void display() const override;
+    std::string toCsv() const override;
 
 
 

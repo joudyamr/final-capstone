@@ -7,9 +7,10 @@ class Device : public Item {
     std::string location ;
     
     public:
-    Device (int i , std::string t , std::string l):Item(i , t){}
+    Device (int i , std::string t , std::string l);
     std::string getLocation() const;
     void display() const override;
+    std::string toCsv() const override;
 
 
 };

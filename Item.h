@@ -20,7 +20,7 @@ class Item
      void giveBack();
      virtual void display() const;
      virtual ~Item();
-
+     virtual std::string toCsv() const = 0;
 
 
 

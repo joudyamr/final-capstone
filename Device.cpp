@@ -15,11 +15,16 @@ string Device::getLocation() const{
 void Device::display() const{
     cout<<"["<<"Device"<<"] " << Item::getId() << " | " << Item::getTitle()<<" | "<<getLocation()<<" | ";
     if (isBorrowed()) {
-        cout << "Borrowed";
+        cout << "borrowed";
     }
     else {
-        cout << "Available";
+        cout << "available";
     }
 
     cout << endl;
+}
+string Device::toCsv() const
+{
+    return "Device," + to_string(getId()) + "," + getTitle() + "," + getLocation() + "," + to_string(isBorrowed());
+
 }
