@@ -2,9 +2,9 @@
 #include "Item.h"
 using namespace std;
 
-Item :: Item (int id , string title ){
-    id = id;
-    title = title ;
+Item :: Item (int i , string t ){
+    id = i;
+    title = t;
     borrowed = false;
 
 }
