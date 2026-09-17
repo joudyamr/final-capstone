@@ -22,7 +22,7 @@ int main()
         cout << "4. Find by ID" << endl << "5. Borrow" << endl << "6. Return" << endl << "7. Delete" << endl << "8. Save" << endl << "9. Load" << endl << "0. Quit" <<endl;
         cout << "Choice:" ;
         cin >> choice;
-        cout<<endl;
+        
 
         switch(choice)
         {
@@ -34,20 +34,22 @@ int main()
 
              cout<<"ID: ";
              cin>>id;
-             cout<<endl;
+             
 
              
 
              if(findById(shelf,id) == nullptr)
              {
                 
-                cout<<"Title: ";
+                cout<<"Title:";
                 cin>>title;
-                cout<<endl;
+                
+                
 
                 cout<<"Author:";
                 cin>>author;
-                cout<<endl;
+                
+                
                 shelf.push_back(new Book(id , title , author));
                 cout<<"Added."<<endl;
              }
@@ -66,7 +68,7 @@ int main()
 
               cout<<"ID: ";
               cin>>id2;
-              cout<<endl;
+              
 
              
 
@@ -74,11 +76,13 @@ int main()
              { 
                 cout<<"Title: ";
                 cin>>title2;
-                cout<<endl;
+                
 
                 cout<<"Location: ";
                 cin>>location;
-                cout<<endl;
+                
+
+
                 shelf.push_back(new Device(id2 , title2 , location));
                 cout<<"Added."<<endl;
              }
@@ -111,7 +115,7 @@ int main()
                 int id3;
                 cout<<"ID: ";
                 cin>>id3;
-                cout<<endl;
+                
 
                 Item* item = findById(shelf, id3);
                 if(item != nullptr)
@@ -132,7 +136,7 @@ int main()
                 int id4;
                 cout<<"ID: ";
                 cin>>id4;
-                cout<<endl;
+                
                 Item* item = findById(shelf, id4);
                 
             
@@ -148,7 +152,7 @@ int main()
                 else
                 {
                     item->borrow();
-                     cout << "borrowed" << endl;
+                     cout << "Borrowed" << endl;
                 }
                 break;
 
@@ -159,7 +163,7 @@ int main()
                 int id5;
                 cout<<"ID: ";
                 cin>>id5;
-                cout<<endl;
+            
                 Item* item = findById(shelf, id5);
                 
                 if(item == nullptr)
@@ -185,7 +189,7 @@ int main()
                 int id6;
                 cout<<"ID: ";
                 cin>>id6;
-                cout<<endl;
+                
                 Item* item = findById(shelf, id6);
                 
                 if(item == nullptr)
@@ -209,7 +213,7 @@ int main()
                             {
                                 delete shelf[i];
                                 shelf.erase(shelf.begin() + i);
-                                cout << "Deleted" << endl;
+                                cout << "Removed" << endl;
                                 break;
                             }
                         }
