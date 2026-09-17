@@ -20,8 +20,9 @@ int main()
         //print the job menu
         cout << "===== Mini Library Desk =====" << endl << "1. Add book" << endl << "2. Add device" << endl << "3. List all" << endl;
         cout << "4. Find by ID" << endl << "5. Borrow" << endl << "6. Return" << endl << "7. Delete" << endl << "8. Save" << endl << "9. Load" << endl << "0. Quit" <<endl;
-        cout << "Choice:" << endl;
+        cout << "Choice:" ;
         cin >> choice;
+        cout<<endl;
 
         switch(choice)
         {
@@ -164,12 +165,12 @@ int main()
                 }
                 else if(!item->isBorrowed())
                 {
-                     cout << "Returned" << endl;
+                     cout << "Not borrowed" << endl;
                 }
                 else
                 {
                     item->giveBack();
-                     cout << "Not borrowed" << endl;
+                     cout << "Returned" << endl;
                 }
                 break;
 
@@ -198,6 +199,7 @@ int main()
                         if(shelf[i]->getId() == id6)
                         {
                             delete shelf[i];
+                            shelf.erase(shelf.begin() + i);
                             cout << "Deleted" << endl;
                             break;
                         }
@@ -217,6 +219,7 @@ int main()
                         out << shelf[i]->toCsv() << endl;
                     }
                     out.close();
+
                     cout << "Saved." << endl;
                 }
                 else
@@ -226,58 +229,82 @@ int main()
                 break;
             }
 
-            case 9 :
-            {   
-                for(int i = 0; i < shelf.size(); i++)
-               {
+            case 9:
+            {
+                 for(int i = 0; i < shelf.size(); i++)
+                {
                      delete shelf[i];
-               }
+                }
 
-                shelf.clear();
+                 shelf.clear();
 
-    
                 ifstream in("library.csv");
 
-                if(!in.is_open())
+                 if(!in.is_open())
                 {
-                    cout << "No library file yet." << endl;
+                     cout << "No library file yet." << endl;
                      break;
                 }
 
-    
-                string line;
-                if(shelf.empty())
-                {
-                      cout << "Shelf is empty." << endl;
-                }
+                 string line;
+                 bool loadedSomething = false;
 
-                while(getline(in, line))
+                 while(getline(in, line))
                 {
-        
+                    if(line.empty())
+                    {
+                        continue;
+                    }
+
+                    loadedSomething = true;
+
                     int c1 = line.find(',');
                     int c2 = line.find(',', c1 + 1);
                     int c3 = line.find(',', c2 + 1);
                     int c4 = line.find(',', c3 + 1);
 
                     string type = line.substr(0, c1);
-                    int id = stoi(line.substr(c1 + 1, c2- c1- 1));
+                    string idStr = line.substr(c1 + 1, c2 - c1 - 1);
                     string title = line.substr(c2 + 1, c3 - c2 - 1);
-                    string extra = line.substr(c3 +1 ,c4 - c3 - 1);
+                    string extra = line.substr(c3 + 1, c4 - c3 - 1);
+
                     bool borrowed = stoi(line.substr(c4 + 1));
-                    
-                    if(type == "Book")
+
+                    int id = stoi(idStr);
+
+                    Item* item = nullptr;
+
+                    if(type == "B")
                     {
-                        shelf.push_back(new Book(id, title, extra));
+                         item = new Book(id, title, extra);
                     }
-                    else if(type == "Device")
+                    else if(type == "D")
                     {
-                        shelf.push_back(new Device(id, title, extra));
+                        item = new Device(id, title, extra);
+                    }
+
+                    if(item != nullptr)
+                    {
+                        if(borrowed)
+                        {
+                             item->borrow();
+                        }
+
+                        shelf.push_back(item);
                     }
                 }
 
-                 in.close();
+                in.close();
 
-                cout << "Loaded." << endl;
+                if(!loadedSomething)
+                {
+                     cout << "Shelf is empty." << endl;
+                }
+                else
+                {
+                     cout << "Loaded." << endl;
+                }
+
                 break;
             }
 

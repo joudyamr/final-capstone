@@ -1,5 +1,4 @@
 #include<iostream>
-#include "Item.h"
 #include "Device.h"
 using namespace std;
 
@@ -25,6 +24,6 @@ void Device::display() const{
 }
 string Device::toCsv() const
 {
-    return "Device," + to_string(getId()) + "," + getTitle() + "," + getLocation() + "," + to_string(isBorrowed());
+    return "D," + to_string(getId()) + "," + getTitle() + "," + getLocation() + "," + to_string(isBorrowed());
 
 }
