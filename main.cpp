@@ -8,7 +8,7 @@
 using namespace std;
 
 
-
+//prtotypes
 Item* findById(vector<Item*>& shelf, int id );
 
 int main()
@@ -23,9 +23,10 @@ int main()
         cout << "Choice:" ;
         cin >> choice;
         
-
+       //switch for each case
         switch(choice)
-        {
+        {   
+            // add book case 1
             case 1 :
             {
              int id ;
@@ -59,7 +60,8 @@ int main()
 
              break;
             }
-
+            
+            // add device case 2
              case 2 :
             {
               int id2;
@@ -91,7 +93,7 @@ int main()
              }
              break;
             }
-
+            // case 3 list the stored in shelf
             case 3 :
             {
                 if(shelf.empty())
@@ -109,7 +111,7 @@ int main()
                 }
                 break;
             }
-
+            // search on shelf by using id
             case 4 :
             {
                 int id3;
@@ -131,6 +133,7 @@ int main()
 
 
             }
+            // case 5 borrow
             case 5 :
             { 
                 int id4;
@@ -158,6 +161,7 @@ int main()
 
 
             }
+            // case 6 return an item
             case 6 :
             {
                 int id5;
@@ -182,7 +186,7 @@ int main()
                 break;
 
             }
-
+            // case 7 deleting an item
             case 7 :
             {   
                 char answer;
@@ -202,7 +206,7 @@ int main()
                 }
                 else
                 {   
-                    cout << "Delete " << id6 << "? (y/n): ";
+                    cout << "Delete " << id6 << "? (y/n) ";
                     cin >> answer;
 
                     if(answer == 'y' || answer == 'Y')
@@ -227,7 +231,7 @@ int main()
                 break;
     
             }
-
+            // case 8 saveall
             case 8 :
             {
                 ofstream out("library.csv");
@@ -247,7 +251,7 @@ int main()
                 }
                 break;
             }
-
+            // case 9 loadall
             case 9:
             {
                  for(int i = 0; i < shelf.size(); i++)
@@ -326,7 +330,7 @@ int main()
 
                 break;
             }
-
+           // quit
             case 0 :
             {
                 for(int i = 0; i < shelf.size(); i++)
@@ -337,7 +341,7 @@ int main()
                 cout << "Goodbye" << endl;
                 break;
             }
-
+            // invalid choice 
             default :
             {
                 cout << "Invalid choice" << endl;
