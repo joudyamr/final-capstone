@@ -177,7 +177,8 @@ int main()
             }
 
             case 7 :
-            {
+            {   
+                char answer;
                 int id6;
                 cout<<"ID: ";
                 cin>>id6;
@@ -193,18 +194,29 @@ int main()
                      cout << "return first" << endl;
                 }
                 else
-                {
-                    for(int i = 0; i < shelf.size(); i++)
+                {   
+                    cout << "Delete " << id6 << "? (y/n): ";
+                    cin >> answer;
+
+                    if(answer == 'y' || answer == 'Y')
                     {
-                        if(shelf[i]->getId() == id6)
+                        for(int i = 0; i < shelf.size(); i++)
                         {
-                            delete shelf[i];
-                            shelf.erase(shelf.begin() + i);
-                            cout << "Deleted" << endl;
-                            break;
+                            if(shelf[i]->getId() == id6)
+                            {
+                                delete shelf[i];
+                                shelf.erase(shelf.begin() + i);
+                                cout << "Deleted" << endl;
+                                break;
+                            }
                         }
                     }
+                    else
+                    {
+                        break;
+                    }
                 }
+                
                 break;
     
             }
