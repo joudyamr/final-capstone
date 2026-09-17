@@ -36,16 +36,18 @@ int main()
              cin>>id;
              cout<<endl;
 
-             cout<<"Title: ";
-             cin>>title;
-             cout<<endl;
-
-             cout<<"Author:";
-             cin>>author;
-             cout<<endl;
+             
 
              if(findById(shelf,id) == nullptr)
              {
+                
+                cout<<"Title: ";
+                cin>>title;
+                cout<<endl;
+
+                cout<<"Author:";
+                cin>>author;
+                cout<<endl;
                 shelf.push_back(new Book(id , title , author));
                 cout<<"Added."<<endl;
              }
@@ -66,16 +68,17 @@ int main()
               cin>>id2;
               cout<<endl;
 
-              cout<<"Title: ";
-              cin>>title2;
-              cout<<endl;
-
-              cout<<"Location: ";
-              cin>>location;
-              cout<<endl;
+             
 
               if(findById(shelf,id2) == nullptr)
-             {
+             { 
+                cout<<"Title: ";
+                cin>>title2;
+                cout<<endl;
+
+                cout<<"Location: ";
+                cin>>location;
+                cout<<endl;
                 shelf.push_back(new Device(id2 , title2 , location));
                 cout<<"Added."<<endl;
              }
